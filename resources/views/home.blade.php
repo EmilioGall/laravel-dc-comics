@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-   <h1 class="text-center">
+   <main>
 
-      Laravel-Vite Template <br>
+      <h1 class="text-center">
 
-      <em class="fs-4">
-         with Bootstrap <i class="fa-brands fa-bootstrap"></i> and Fontawesome <i class="fa-solid fa-font-awesome"></i>
-      </em>
+         HomePage Comics Archieve
 
-   </h1>
+      </h1>
+
+   </main>
 @endsection
