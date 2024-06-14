@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comics', function (Blueprint $table) {
+
             $table->id();
+
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('thumb')->nullable();
+            $table->unsignedFloat('price');
+            $table->string('series')->nullable();
+            $table->date('sale_date')->nullable();
+            $table->string('type')->nullable();
+
             $table->timestamps();
+
         });
     }
 
