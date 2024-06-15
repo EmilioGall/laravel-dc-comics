@@ -50,36 +50,42 @@
                <tbody>
                   @foreach ($comicsArray as $comic)
                      <tr>
-                        <div class="action">
-                           <th scope="row">CM-{{ $comic->id }}</th>
-                           <td>{{ $comic->title }}</td>
-                           <td>{{ $comic->type }}</td>
-                           <td>{{ $comic->series }}</td>
-                           <td>{{ $comic->price }} $</td>
-                           <td>
+                        <th scope="row">
+                           <a href="{{ route('comics.show', ['comic' => $comic->id]) }}">
+                              Cm-{{ $comic->id }}
+                           </a>
+                        </th>
+                        <td>
+                           <a href="{{ route('comics.show', ['comic' => $comic->id]) }}">
+                              {{ $comic->title }}
+                           </a>
+                        </td>
+                        <td>{{ $comic->type }}</td>
+                        <td>{{ $comic->series }}</td>
+                        <td>{{ $comic->price }} $</td>
+                        <td>
 
-                              <button type="button" class="btn btn-outline-primary">
+                           <button type="button" class="btn btn-outline-primary">
 
-                                 <a href="">
-               
-                                    <i class="fa-regular fa-pen-to-square"></i>
-               
-                                 </a>
-               
-                              </button>
+                              <a href="">
 
-                              <button type="button" class="btn btn-outline-danger">
+                                 <i class="fa-regular fa-pen-to-square"></i>
 
-                                 <a href="">
-               
-                                    <i class="fa-regular fa-trash-can"></i>
+                              </a>
 
-                                 </a>
-               
-                              </button>
+                           </button>
 
-                           </td>
-                        </div>
+                           <button type="button" class="btn btn-outline-danger">
+
+                              <a href="">
+
+                                 <i class="fa-regular fa-trash-can"></i>
+
+                              </a>
+
+                           </button>
+
+                        </td>
                      </tr>
                   @endforeach
                </tbody>
