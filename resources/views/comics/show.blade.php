@@ -60,7 +60,7 @@
                         </li>
 
                         <li>
-                           <h4 class="fs-3 fw-bold">Sales Date: <em class="fs-4 fw-lighter">{{ date('d / m / Y', strtotime($comicClicked->sale_date)) }}</em>
+                           <h4 class="fs-3 fw-bold">Sale Date: <em class="fs-4 fw-lighter">{{ date('d / m / Y', strtotime($comicClicked->sale_date)) }}</em>
                            </h4>
                         </li>
 
