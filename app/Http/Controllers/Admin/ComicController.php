@@ -33,7 +33,16 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comicData = $request->all();
+
+        $formattedDate = date('Y-m-d', strtotime($comicData['sale_date']));
+
+        $newComic = new Comic();
+        $newComic->fill($comicData);
+        $newComic->sale_date = $formattedDate;
+        $newComic->save();
+
+        return redirect()->route('comics.show', ['comic' => $newComic->id]);
     }
 
     /**

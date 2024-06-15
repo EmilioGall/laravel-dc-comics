@@ -16,15 +16,15 @@
 
             <div class="col-2 d-flex justify-content-center align-items-end">
 
-               <button type="button" class="btn btn-primary h-75 w-100 d-flex align-items-center justify-content-center">
+               <a class="w-100 d-flex align-items-center justify-content-center" href="{{ route('comics.create') }}">
 
-                  <a href="{{ route('comics.create') }}">
+                  <button type="button" class="btn btn-primary">
 
-                     <i class="fa-solid fa-plus"></i>
+                     <i class="fa-solid fa-plus"></i> Add New Comic
 
-                  </a>
+                  </button>
 
-               </button>
+               </a>
 
             </div>
 
