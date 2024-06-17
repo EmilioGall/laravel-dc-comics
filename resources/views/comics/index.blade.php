@@ -65,25 +65,35 @@
                         <td>{{ $comic->price }} $</td>
                         <td>
 
-                           <button type="button" class="btn btn-outline-primary">
+                           <div class="d-flex gap-2">
 
-                              <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}">
+                              {{-- Modify Button --}}
+                              <button type="button" class="btn btn-outline-primary">
+   
+                                 <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}">
+   
+                                    <i class="fa-regular fa-pen-to-square"></i>
+   
+                                 </a>
+   
+                              </button>
+   
+                              {{-- Delete Button --}}
+                              <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
+                                 @csrf
+                                 @method('DELETE')
+   
+                                 <button type="submit" class="btn btn-outline-danger">
+   
+                                    <i class="fa-regular fa-trash-can"></i>
+   
+                                 </button>
+   
+                              </form>
 
-                                 <i class="fa-regular fa-pen-to-square"></i>
+                           </div>
 
-                              </a>
 
-                           </button>
-
-                           <button type="button" class="btn btn-outline-danger">
-
-                              <a href="">
-
-                                 <i class="fa-regular fa-trash-can"></i>
-
-                              </a>
-
-                           </button>
 
                         </td>
                      </tr>
