@@ -2,7 +2,6 @@
 
 @section('content')
    <main>
-
       <div class="container-md">
 
          <div class="row justify-content-between my-3">
@@ -32,7 +31,7 @@
 
          <section class="row">
 
-            <table class="table table-striped">
+            <table class="table table-hover">
 
                <thead>
 
@@ -48,7 +47,7 @@
                </thead>
 
                <tbody>
-                  @foreach ($comicsArray as $comic)
+                  @foreach ($comicsArray as $comicId => $comic)
                      <tr>
                         <th scope="row">
                            <a href="{{ route('comics.show', ['comic' => $comic->id]) }}">
@@ -62,7 +61,13 @@
                         </td>
                         <td>{{ $comic->type }}</td>
                         <td>{{ $comic->series }}</td>
-                        <td>{{ $comic->price }} $</td>
+                        <td>
+                           @if (str_contains($comic->price, '.'))
+                              {{ $comic->price }} $
+                           @else
+                              {{ $comic->price }}.00 $
+                           @endif
+                        </td>
                         <td>
 
                            <div class="d-flex gap-2">
@@ -80,10 +85,13 @@
 
                               {{-- Delete Button --}}
 
-                              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                      data-bs-target="#deleteModal">
+                              <button type="button"
+                                 class="btn btn-outline-danger my-delete-btn{{ $comicId }}"
+                                 data-bs-toggle="modal"
+                                 data-bs-target="#deleteModal"
+                                 data-php-title-variable="{{ $comic->title }}">
 
-                                      <i class="fa-regular fa-trash-can"></i>
+                                 <i class="fa-regular fa-trash-can"></i>
 
                               </button>
 
@@ -91,12 +99,16 @@
 
                         </td>
                      </tr>
+                     <div class="my-counter" data-php-count-variable="{{ count($comicsArray) }}"></div>
                   @endforeach
                </tbody>
 
-               {{-- Delete Confirmation Modal --}}                   
-               <div id="deleteModal" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+               {{-- Delete Confirmation Modal --}}
+               <div id="deleteModal"
+                  class="modal fade"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
 
                   <div class="modal-dialog modal-dialog-centered">
 
@@ -106,12 +118,15 @@
 
                            <h1 id="exampleModalLabel" class="modal-title fs-4 fw-bold">Delete Comic</h1>
 
-                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           <button type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"></button>
 
                         </div>
 
                         <div class="modal-body">
-                           Are you sure you want to delete this comic?
+                           Are you sure you want to delete the comic: "<span class="my-selected-comic"></span>"?
                         </div>
 
                         <div class="modal-footer">
