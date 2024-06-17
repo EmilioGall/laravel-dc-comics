@@ -67,7 +67,7 @@
 
                            <button type="button" class="btn btn-outline-primary">
 
-                              <a href="">
+                              <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}">
 
                                  <i class="fa-regular fa-pen-to-square"></i>
 
