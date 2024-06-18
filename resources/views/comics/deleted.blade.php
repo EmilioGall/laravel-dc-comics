@@ -5,45 +5,30 @@
 
       <div class="container-md">
 
-         {{-- Comic Table Header --}}
-         <div class="row justify-content-between my-3">
+         {{-- Deleted Comic Table Header --}}
+         <div class="row justify-content-between align-items-center py-3 border-bottom">
 
-            {{-- Comic Table Title --}}
-            <div class="col-8">
-
-               <h1 class="text-primary text-center m-0">Comics Archive</h1>
-
+            <div class="col-12 col-sm-10">
+   
+               <h1 class="fw-1 fs-1 text-danger">Comics Archive: Deleted Comics</h1>
+   
             </div>
-
-            {{-- Link to Deleted Comic Table --}}
-            <div class="col-2 d-flex justify-content-center align-items-end">
-
-               <button type="button" class="btn btn-danger">
-
-                  <a class="w-100 d-flex align-items-center justify-content-center" href="{{ route('deletedComics') }}">
-
-                     <i class="fa-regular fa-trash-can me-1"></i> Go to Deleted
-
+   
+            <div class="col-12 col-sm-2">
+   
+               <button type="button"
+                  class="btn btn-outline-danger h-75 w-100 d-flex align-items-center justify-content-center">
+   
+                  <a href="{{ route('comics.index') }}">
+   
+                     <i class="fa-solid fa-angles-left"></i> Go Back
+   
                   </a>
-
+   
                </button>
-
+   
             </div>
-
-            <div class="col-2 d-flex justify-content-center align-items-end">
-
-               <button type="button" class="btn btn-primary">
-
-                  <a class="w-100 d-flex align-items-center justify-content-center" href="{{ route('comics.create') }}">
-
-                     <i class="fa-solid fa-plus me-1"></i> Add New Comic
-
-                  </a>
-
-               </button>
-
-            </div>
-
+   
          </div>
 
          {{-- Comic Table --}}
@@ -65,7 +50,7 @@
                </thead>
 
                <tbody>
-                  @foreach ($comicsArray as $comicId => $comic)
+                  @foreach ($deletedComicsArray as $comicId => $comic)
                      <tr>
                         <th scope="row">
                            <a href="{{ route('comics.show', ['comic' => $comic->id]) }}">
@@ -90,19 +75,18 @@
 
                            <div class="d-flex gap-2">
 
-                              {{-- Modify Button --}}
+                              {{-- Restore Button --}}
                               <button type="button" class="btn btn-outline-primary">
 
                                  <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}">
 
-                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
 
                                  </a>
 
                               </button>
 
                               {{-- Delete Button --}}
-
                               <button type="button"
                                  class="btn btn-outline-danger my-delete-btn{{ $comicId }}"
                                  data-bs-toggle="modal"
@@ -117,7 +101,6 @@
 
                         </td>
                      </tr>
-                     <div class="my-counter" data-php-count-variable="{{ count($comicsArray) }}"></div>
                   @endforeach
                </tbody>
 
