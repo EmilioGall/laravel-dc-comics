@@ -101,4 +101,18 @@ class ComicController extends Controller
         $comic->delete();
         return redirect()->route('comics.index');
     }
+
+    /**
+     * Display a listing of the soft deleted resource.
+     */
+    public function getDeletedComics()
+    {
+        
+        $deletedComicsArray = Comic::onlyTrashed()->get();
+
+        // dd($deletedComicsArray);
+
+        return view('comics.deleted', compact('deletedComicsArray'));
+        
+    }
 }
