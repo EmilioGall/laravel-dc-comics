@@ -28,11 +28,12 @@ for (let index = 0; index < comicArrayLength-1; index++) {
     // Define *constant* for Delete Button DOM Element.
     const deleteBtnElem = document.querySelector(`.my-delete-btn${index + 1}`);
 
-    console.log(deleteBtnElem);
+    // console.log(deleteBtnElem);
 
 
     // Define *variable* for Clicked Comic Title.
     let comicClickedTitle = "";
+
 
     // Add Event on *Click* for Delete Button DOM Element.
     deleteBtnElem.addEventListener("click", () => {

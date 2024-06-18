@@ -14,7 +14,7 @@
          <div class="col-12 col-sm-2">
 
             <button class="btn btn-outline-primary h-75 w-100 d-flex align-items-center justify-content-center"
-                    type="button">
+               type="button">
 
                <a href="{{ route('comics.index') }}">
 
@@ -30,7 +30,8 @@
 
       <div>
 
-         <form class="border rounded p-3 my-4" action="{{ route('comics.update', ['comic' => $comic->id]) }}" method="POST">
+         <form class="border rounded p-3 my-4" action="{{ route('comics.update', ['comic' => $comic->id]) }}"
+            method="POST">
             @csrf
 
             @method('PUT')
@@ -41,8 +42,12 @@
                <div class="col-12">
 
                   <label class="form-label fw-bold" for="title">Comic Title</label>
-                  <input id="title" class="form-control" name="title" type="text" value="{{ $comic->title }}"
-                         required="">
+                  <input id="title"
+                     class="form-control"
+                     name="title"
+                     type="text"
+                     value="{{ $comic->title }}"
+                     required="">
                   <div class="invalid-feedback">
                      Valid Comic Title is required.
                   </div>
@@ -53,8 +58,11 @@
                <div class="col-md-6">
 
                   <label class="form-label" for="sale_date">Sale Date</label>
-                  <input id="sale_date" class="form-control" name="sale_date" type="text"
-                         value="{{ date('d-m-Y', strtotime($comic->sale_date)) }}">
+                  <input id="sale_date"
+                     class="form-control"
+                     name="sale_date"
+                     type="text"
+                     value="{{ date('d-m-Y', strtotime($comic->sale_date)) }}">
 
                </div>
 
@@ -62,8 +70,14 @@
                <div class="col-sm-6">
 
                   <label class="form-label fw-bold" for="price">Comic Price in $</label>
-                  <input id="price" class="form-control" name="price" type="number" value="{{ $comic->price }}"
-                         min="0" required="" step="0.01">
+                  <input id="price"
+                     class="form-control"
+                     name="price"
+                     type="number"
+                     value="{{ $comic->price }}"
+                     min="0"
+                     required=""
+                     step="0.01">
                   <div class="invalid-feedback">
                      Valid Comic Price is required.
                   </div>
@@ -74,7 +88,11 @@
                <div class="col-md-7">
 
                   <label class="form-label" for="series">Series</label>
-                  <input id="series" class="form-control" name="series" type="text" value="{{ $comic->series }}">
+                  <input id="series"
+                     class="form-control"
+                     name="series"
+                     type="text"
+                     value="{{ $comic->series }}">
 
                </div>
 
@@ -94,7 +112,11 @@
                <div class="col-12">
 
                   <label class="form-label" for="thumb">Comic Poster URL</label>
-                  <input id="thumb" class="form-control" name="thumb" type="text" value="{{ $comic->thumb }}">
+                  <input id="thumb"
+                     class="form-control"
+                     name="thumb"
+                     type="text"
+                     value="{{ $comic->thumb }}">
 
                </div>
 
@@ -102,7 +124,10 @@
                <div class="col-12">
 
                   <label class="form-label" for="description">Description</label>
-                  <textarea id="description" class="form-control" name="description" rows="5">{{ $comic->description }}</textarea>
+                  <textarea id="description"
+                     class="form-control"
+                     name="description"
+                     rows="5">{{ $comic->description }}</textarea>
 
                </div>
 

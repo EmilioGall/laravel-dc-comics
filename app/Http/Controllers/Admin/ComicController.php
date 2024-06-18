@@ -33,6 +33,17 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        // Add Validation for data input variable ($request)
+        $request->validate([
+
+            'title' => ['required', 'min:3'],
+            'price' => ['required', 'min:0.01'],
+            'series' => ['min:3'],
+            'description' => ['min:20']
+
+        ]);
+
+
         $comicData = $request->all();
 
         $formattedDate = date('Y-m-d', strtotime($comicData['sale_date']));
@@ -73,7 +84,7 @@ class ComicController extends Controller
         $formattedDate = date('Y-m-d', strtotime($updatedData['sale_date']));
 
         $updatedData['sale_date'] = $formattedDate;
-        
+
         // dd($updatedData);
 
         $comic->update($updatedData);
