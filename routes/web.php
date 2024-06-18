@@ -20,5 +20,5 @@ Route::get('/', function () {
 
 Route::resource('comics', ComicController::class);
 
-Route::get('/comics/bin',
-[ComicController::class, 'index'])->name('bin');
+Route::get('deleted-comics',
+[ComicController::class, 'getDeletedComics'])->name('deletedComics');
