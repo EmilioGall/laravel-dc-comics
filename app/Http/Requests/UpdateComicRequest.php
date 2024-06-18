@@ -22,7 +22,12 @@ class UpdateComicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'title' => ['required', 'min:3'],
+            'price' => ['required', 'min:0.01'],
+            'series' => ['min:3'],
+            'description' => ['min:20']
+
         ];
     }
 
@@ -33,6 +38,10 @@ class UpdateComicRequest extends FormRequest
      */
     public function messages()
     {
-        return [];
+        return [
+
+            'title.required' => 'The title can not be empty! Please insert a valid title.',
+
+        ];
     }
 }

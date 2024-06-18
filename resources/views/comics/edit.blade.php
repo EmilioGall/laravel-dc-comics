@@ -43,14 +43,19 @@
 
                   <label class="form-label fw-bold" for="title">Comic Title</label>
                   <input id="title"
-                     class="form-control"
+                     class="form-control
+                     @error('title')
+                     is-invalid
+                     @enderror"
                      name="title"
                      type="text"
-                     value="{{ $comic->title }}"
-                     required="">
-                  <div class="invalid-feedback">
-                     Valid Comic Title is required.
-                  </div>
+                     value="{{ old('title', $comic->title) }}">
+
+                  @error('title')
+                     <div class="alert alert-danger mt-1">
+                        The title can not be empty or less than 3 digits! Please insert a valid title.
+                     </div>
+                  @enderror
 
                </div>
 
@@ -62,7 +67,7 @@
                      class="form-control"
                      name="sale_date"
                      type="text"
-                     value="{{ date('d-m-Y', strtotime($comic->sale_date)) }}">
+                     value="{{ old('sale_date', date('d-m-Y', strtotime($comic->sale_date))) }}">
 
                </div>
 
@@ -71,16 +76,21 @@
 
                   <label class="form-label fw-bold" for="price">Comic Price in $</label>
                   <input id="price"
-                     class="form-control"
+                     class="form-control
+                     @error('price')
+                     is-invalid
+                     @enderror"
                      name="price"
                      type="number"
-                     value="{{ $comic->price }}"
+                     value="{{ old('price', $comic->price) }}"
                      min="0"
-                     required=""
                      step="0.01">
-                  <div class="invalid-feedback">
-                     Valid Comic Price is required.
-                  </div>
+
+                  @error('price')
+                     <div id="title-empty-error" class="invalid-feedback">
+                        The price can not be empty or less than 0.01! Please insert a valid amout.
+                     </div>
+                  @enderror
 
                </div>
 
@@ -89,10 +99,19 @@
 
                   <label class="form-label" for="series">Series</label>
                   <input id="series"
-                     class="form-control"
+                     class="form-control
+                     @error('series')
+                     is-invalid
+                     @enderror"
                      name="series"
                      type="text"
-                     value="{{ $comic->series }}">
+                     value="{{ old('series', $comic->series) }}">
+
+                  @error('series')
+                     <div id="title-empty-error" class="invalid-feedback">
+                        The series can not be less than 3 digits! Please insert a valid series.
+                     </div>
+                  @enderror
 
                </div>
 
@@ -101,9 +120,9 @@
 
                   <label class="form-label" for="type">Type</label>
                   <select id="type" class="form-select" name="type">
-                     <option value="comic book" @selected($comic->type === 'comic book')>Comic Book</option>
-                     <option value="graphic novel" @selected($comic->type === 'graphic novel')>Graphic Novel</option>
-                     <option value="manga" @selected($comic->type === 'manga')>Manga</option>
+                     <option value="comic book" @selected(old('type', $comic->type) === 'comic book')>Comic Book</option>
+                     <option value="graphic novel" @selected(old('type', $comic->type) === 'graphic novel')>Graphic Novel</option>
+                     <option value="manga" @selected(old('type', $comic->type) === 'manga')>Manga</option>
                   </select>
 
                </div>
@@ -116,7 +135,7 @@
                      class="form-control"
                      name="thumb"
                      type="text"
-                     value="{{ $comic->thumb }}">
+                     value="{{ old('thumb', $comic->thumb) }}">
 
                </div>
 
@@ -127,7 +146,7 @@
                   <textarea id="description"
                      class="form-control"
                      name="description"
-                     rows="5">{{ $comic->description }}</textarea>
+                     rows="5">{{ old('description', $comic->description) }}</textarea>
 
                </div>
 
